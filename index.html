@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/darkly/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+          <div class="navbar-brand" style="font-family: 'Cairo', sans-serif;">Hannahbot </div>
+          <div class="navbar-brand"><small class="text-muted">Leading bot in the class of being donk</small></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_navbar" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="main_navbar">
+            <ul class="navbar-nav me-auto nav nav-tabs ">
+              <li class="nav-item">
+                <button class="nav-link active ajaxLink" data-bs-toggle="tab" href="#home" id="home_tab_toggle">Home
+                  <span class="visually-hidden">(current)</span>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link ajaxLink" data-bs-toggle="tab" href="#features" id="features_tab_toggle">Features</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link ajaxLink" data-bs-toggle="tab" href="#commands" id="commands_tab_toggle">Commands</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link ajaxLink" data-bs-toggle="tab" href="#contact" id="contact_tab_toggle">Contact</button>
+              </li>
+      
+            </ul>
+      
+          </div>
+        </div>
+      </nav>
+      
+      <script>
+        $('.ajaxLink').click(function(e) {
+          location.hash = this.getAttribute("href"); // get the clicked link href
+          e.preventDefault();
+        });
+      
+        var triggerTabList = [].slice.call(document.querySelectorAll('#main_navbar button'))
+        triggerTabList.forEach(function(triggerEl) {
+          var tabTrigger = new bootstrap.Tab(triggerEl)
+      
+          triggerEl.addEventListener('click', function(event) {
+            event.preventDefault()
+            tabTrigger.show()
+          })
+        })
+      
+        $(document).ready(function() {
+          function onHashChange() {
+            var hash = window.location.hash;
+      
+            if (hash) {
+              // using ES6 template string syntax
+              var triggerEl = document.querySelector(`#main_navbar button[id="${hash.substring(1)}_tab_toggle"]`)
+              bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+            }
+          }
+      
+          window.addEventListener('hashchange', onHashChange, false);
+          onHashChange();
+        });
+      </script>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+        <!-- Home Tab -->
+        <div class="tab-pane container active fade show" role="tabpanel" id="home">
+            <div class="container p-5 my-1 ">
+                <h3>
+                    
+                   
+                <small class="text-muted">This website is in development! </small>
+                </h3>
+            
+                <a type="button" class="btn btn-secondary" href="/#commands">Commands</a>
+            </div>
+            
+        </div>
+
+        <!-- Features tab -->
+        <div class="tab-pane container fade" role="tabpanel" id="features">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Command</th>
+                    <th scope="col">Aliases</th>
+                    <th scope="col">Options/Subcommands</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Default Permissions</th>
+                    <th scope="col">Platforms</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class='table-secondary'>
+                    <td>!hhb {$row['command']}</td>
+                    <td>{$row['aliases']}</td>
+                    <td>{$options}</td>
+                    <td>{$row['description']}</td>
+                    <td>{$row['default_permissions']}</td>
+                    <td>{$platforms}</td>
+                  </tr>
+                  <tr class='table-primary'>
+                    <div class="container p-5 my-1 ">
+                      <table>
+                        <tbody>
+                          <tr class='table-primary'>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;!hhb {$row['command']}</td>
+                            <td>{$row['aliases']}</td>
+                            <td>{$options}</td>
+                            <td>{$row['description']}</td>
+                            <td>{$row['default_permissions']}</td>
+                            <td>{$platforms}</td>
+                          </tr>
+                          <tr class='table-info'>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!hhb {$row['command']}</td>
+                            <td>{$row['aliases']}</td>
+                            <td>{$options}</td>
+                            <td>{$row['description']}</td>
+                            <td>{$row['default_permissions']}</td>
+                            <td>{$platforms}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </tr>
+              
+                  <tr class='table-light'>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hidden row</td>
+                    <td>{$row['aliases']}</td>
+                    <td>{$options}</td>
+                    <td>{$row['description']}</td>
+                    <td>{$row['default_permissions']}</td>
+                    <td>{$platforms}</td>
+                  </tr>
+                  <tr class='table-secondary'>
+                    <td>!hhb {$row['command']}</td>
+                    <td>{$row['aliases']}</td>
+                    <td>{$options}</td>
+                    <td>{$row['description']}</td>
+                    <td>{$row['default_permissions']}</td>
+                    <td>{$platforms}</td>
+                  </tr>
+              
+                </tbody>
+              </table>
+              
+        </div>
+
+        <!-- Commands tab -->
+        <div class="tab-pane container fade" role="tabpanel" id="commands">
+            <table class="table table-sm table-hover" id="commands_table">
+                <thead>
+                    <tr>
+                        <th scope="col">Command</th>
+                        <th scope="col">Aliases</th>
+                        <th scope="col">Options/Subcommands</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Default Permissions</th>
+                        <!-- <th scope="col" class='d-sm-none d-md-block'>Platforms</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+            
+                    <tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb </td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb changecolour</td>
+                            <td>changecolor</td>
+                            <td>{colour} </td>
+                            <td>Changes the colour of hannahbot in chat.</td>
+                            <td>Hannahbot Admins</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb channels</td>
+                            <td>channel</td>
+                            <td> (join, leave)</td>
+                            <td>Hannahbot channels command. Lets Admins join and leave twitch channels.</td>
+                            <td>Hannahbot Admins</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="channels">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb channels join</td>
+                            <td></td>
+                            <td>{channel_name} </td>
+                            <td>Tells hannahbot to join a new twitch channel.</td>
+                            <td>Hannahbot Admins</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="channels">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb channels leave</td>
+                            <td>part, remove, delete, clear</td>
+                            <td>{channel_name} </td>
+                            <td>Removes hannahbot from a twitch channel.</td>
+                            <td>Hannahbot Admins</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb channels">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb channels list</td>
+                            <td>all, listall</td>
+                            <td> </td>
+                            <td>Returns a list of all twitch channels hannahbot is in.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb colourchanger</td>
+                            <td>colorchanger, cc</td>
+                            <td> (single, last, set, reset)</td>
+                            <td>Colourchanger command to change your twitch colour based on what you select.</td>
+                            <td>Owner</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb commands</td>
+                            <td>help, list, ?</td>
+                            <td> </td>
+                            <td>Command to show all your available hannahbot commands.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb disable</td>
+                            <td>off</td>
+                            <td> </td>
+                            <td>Disables hannahbot across all chats.</td>
+                            <td>Hannahbot Admins</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb enable</td>
+                            <td>on</td>
+                            <td> </td>
+                            <td>Enables hannahbot across all chats.</td>
+                            <td>Hannahbot Admins</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb messageuuid</td>
+                            <td>muuid, uuid</td>
+                            <td> </td>
+                            <td>Returns the message_uuid of the message you last sent in twitch chat.</td>
+                            <td>Hannahbot Admins</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb mycolour</td>
+                            <td>mycolor, mycol</td>
+                            <td> </td>
+                            <td>Returns your current twitch chat colour.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb notification(s)</td>
+                            <td>ping(s), notif(s)</td>
+                            <td> (setup, list, enable, disable, add, remove, ignore, unignore, clear, allowmulti, authenticate, afktime)</td>
+                            <td>Hannahbot Notifications command. Set up pings to be notified on your mobile phone via Telegram. </td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) add</td>
+                            <td>create</td>
+                            <td>{ping} </td>
+                            <td>Adds a ping to your list for hannahbot to look out for.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) afktime</td>
+                            <td>(set)afk, (set)afktime, (set)timeout</td>
+                            <td> </td>
+                            <td>Sets the time the user has to be inactive in chat to recieve mobile notifications.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) allowmulti</td>
+                            <td>multi</td>
+                            <td> </td>
+                            <td>Toggles a users setting to allow multiple telegram accounts.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) auth</td>
+                            <td>authenticate, verify</td>
+                            <td>{auth_code} </td>
+                            <td>Authenticates the user for mobile notificartions.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) clear</td>
+                            <td>deleteall, removeall, empty, delall, clearall</td>
+                            <td> </td>
+                            <td>Clears all the users set pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) disable</td>
+                            <td>off, stop</td>
+                            <td> </td>
+                            <td>Disables your mobile twitch pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) enable</td>
+                            <td>on</td>
+                            <td> </td>
+                            <td>Enables your mobile twitch pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) ignore</td>
+                            <td>block</td>
+                            <td> (list, channel, user)</td>
+                            <td>Allows users to ignore channels and users in their pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s) ignore">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) ignore channel</td>
+                            <td>c</td>
+                            <td>{channel} </td>
+                            <td>Ignores a specific channel in your pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s) ignore">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) ignore list</td>
+                            <td>show</td>
+                            <td> (users, channels)</td>
+                            <td>Shows your ignored users/channels for your pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s) ignore">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) ignore user</td>
+                            <td>u</td>
+                            <td>{username} </td>
+                            <td>Ignores a specific user in your pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) list</td>
+                            <td>mine, my, pings</td>
+                            <td> </td>
+                            <td>Returns a list of all your set pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) remove</td>
+                            <td>delete, rem, del</td>
+                            <td>{ping} </td>
+                            <td>Removes a ping from your settings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) setup</td>
+                            <td>start</td>
+                            <td> </td>
+                            <td>Sets up mobile pings for your account.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s)">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) unignore</td>
+                            <td>unblock, pardon</td>
+                            <td> (channel, user)</td>
+                            <td>Allows users to un-ignore channels and users in their pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s) unignore">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) unignore channel</td>
+                            <td>c</td>
+                            <td>{channel} </td>
+                            <td>Un-ignores a specific channel in your pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-dark collapse command_table_row" parent_command="!hhb notification(s) unignore">
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path></svg> !hhb notification(s) unignore user</td>
+                            <td>u</td>
+                            <td>{username} </td>
+                            <td>Un-ignores a specific user in your pings.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb permission(s)</td>
+                            <td>perm(s)</td>
+                            <td> (add, remove, list, check)</td>
+                            <td>View and edit hannahbot perms for yourself or a user.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb reminder(s)</td>
+                            <td>rem</td>
+                            <td>{user} (me, list, delete)</td>
+                            <td>Hannahbot reminder command. Set reminders for yourself or others in twitch chat.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb reportbug</td>
+                            <td>modhelp, helpme, report, error</td>
+                            <td>{error} </td>
+                            <td>Informs the hannahbot admins of an error or help needed. </td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb status</td>
+                            <td>info, uptime, version</td>
+                            <td> </td>
+                            <td>Shows the current status, version and uptime of hannahbot.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr><tr class="table-secondary main_command_row command_table_row" parent_command="">
+                            <td>!hhb test</td>
+                            <td>modcheck, pausechamp, dinkdonk</td>
+                            <td> </td>
+                            <td>Tests if hannahbot can reply to you in this channel.</td>
+                            <td>Everyone</td>
+                            <!-- <td class='d-sm-none d-md-block'>Twitch. </td> -->
+                        </tr>    </tbody>
+            </table>
+        </div>
+
+        <!-- Contact tab -->
+        <div class="tab-pane container fade" role="tabpanel" id="contact">
+            <div class="container p-5 my-1 ">
+                <h3>
+                    
+                    <small class="text-muted"> Get in touch with us.</small>
+                </h3>
+            
+                <div class="container my-5 ">
+                    <div class="card border-danger  mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Developer</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Paulitio</h4>
+                            <p class="card-text">I work on and host hannahbot. <br>If you have any questions feel free to contact me.</p>
+                            <!-- Links -->
+                            <ul class="nav nav-tabs">
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#twitch">Twitch</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#github">Github</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#other">Other</a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade active show" id="twitch">
+                                    <p>I stream sometimes. <a href="https://twitch.tv/paulitio">Link</a></p>
+                                </div>
+                                <div class="tab-pane fade " id="github">
+                                    <p>I code sometimes. <a href="https://github.com/ThaFirstPaul/">Link</a></p>
+                                </div>
+                                <div class="tab-pane fade" id="other">
+                                    <p>I reply sometimes. <a href="mailto://paul@hannahbot.xyz">Link</a></p>
+                                </div>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+            
+            
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
