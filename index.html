@@ -108,6 +108,12 @@
 
     <!-- Commands tab -->
     <div class="tab-pane container fade" role="tabpanel" id="commands">
+      <!-- JSON generated commands table -->
+      <table class="table table-sm table-hover" id="dataTable">
+
+      </table>
+
+      <!-- Old commands table -->
       <table class="table table-sm table-hover" id="commands_table">
         <thead>
           <tr>
@@ -504,6 +510,7 @@
           </tr>
         </tbody>
       </table>
+
     </div>
 
     <!-- Contact tab -->
@@ -556,6 +563,40 @@
 
   </div>
 
+
+  <script>
+    // Function to generate table from JSON
+    function generateTable(data) {
+      var table = document.getElementById("dataTable");
+
+      // Create table header
+      var header = table.createTHead();
+      var row = header.insertRow(0);
+      Object.keys(data[0]).forEach(function (key) {
+        var th = document.createElement("th");
+        th.innerHTML = key;
+        row.appendChild(th);
+      });
+
+      // Create table body
+      var body = table.createTBody();
+      data.forEach(function (obj) {
+        var row = body.insertRow();
+        Object.keys(obj).forEach(function (key) {
+          var cell = row.insertCell();
+          cell.innerHTML = obj[key];
+        });
+      });
+    }
+
+    // Fetch JSON data from an external file
+    fetch('path/to/your/data.json')
+      .then(response => response.json())
+
+    // Call the function with the JSON data
+      .then(jsonData => generateTable(jsonData))
+      .catch(error => console.error('Error fetching JSON:', error));
+  </script>
 </body>
 
 </html>
