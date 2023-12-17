@@ -1,0 +1,275 @@
+{
+    "commands": {
+        "changecolor": {
+            "name": "hhb changecolor",
+            "description": "Changes the colour of hannahbot in chat.",
+            "version_added": "2.0",
+            "commands_regex": "changecolou?r",
+            "usage": "changecolor {color}",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "changenick": {
+            "name": "hhb changenick",
+            "description": "Change the displayed nickname of hannahbot.",
+            "version_added": "2.0",
+            "commands_regex": "(change|)nick(name|)",
+            "usage": "changenick {nickname}",
+            "supported_platforms": [
+                "discord"
+            ]
+        },
+        "channels": {
+            "name": "hhb channels",
+            "description": "View and/or edit the channels hannahbot is in.",
+            "version_added": "2.0",
+            "commands_regex": "channels?",
+            "usage": "channels [join|leave|list]",
+            "supported_platforms": [
+                "twitch",
+                "twitch_whisper"
+            ]
+        },
+        "commands": {
+            "name": "hhb commands",
+            "description": "Shows all commands available and help.",
+            "version_added": "2.0",
+            "commands_regex": "comm?|commands?|help|list|\\?",
+            "usage": "commands",
+            "supported_platforms": [
+                "twitch",
+                "discord"
+            ]
+        },
+        "compliment": {
+            "name": "hhb compliment",
+            "description": "Compliments you or another chatter.",
+            "version_added": "2.0",
+            "commands_regex": "insult|compliment|admire|bless.*",
+            "usage": "compliment [user]",
+            "supported_platforms": [
+                "twitch",
+                "discord"
+            ]
+        },
+        "cutepic": {
+            "name": "hhb cute",
+            "description": "Retrieves a picture of a cute dog or cat from the web.",
+            "version_added": "2.1",
+            "commands_regex": "(cute ?)?(dog|cat)? ?(pic(ture)?)",
+            "usage": "cute [dog|cat]",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "definition": {
+            "name": "hhb definition",
+            "description": "Looks up the definition of the given word.",
+            "version_added": "2.0",
+            "commands_regex": "define|whatis|lookup",
+            "usage": "define {word}",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "disable": {
+            "name": "hhb disable",
+            "description": "Disables Hannahbot, who will then ignore all commands and stop all actions (eg. reminders). Admins can re-enable with !hhb enable.",
+            "version_added": "2.2",
+            "commands_regex": "disable|stop|halt",
+            "usage": "disable",
+            "supported_platforms": [
+                "twitch",
+                "twitch_whisper",
+                "discord",
+                "telegram",
+                "web"
+            ]
+        },
+        "error": {
+            "name": "hhb error",
+            "description": "Tests the error-handeling capabilities of Hannahbot.",
+            "version_added": "2.2",
+            "commands_regex": "(test)?error",
+            "usage": "error",
+            "supported_platforms": [
+                "twitch",
+                "discord",
+                "twitch_whisper"
+            ]
+        },
+        "german": {
+            "name": "hhb german",
+            "description": "Replies with a german phrase.",
+            "version_added": "2.0",
+            "commands_regex": "(german|deutsch).*",
+            "usage": "german",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "hhb": {
+            "name": "hhb",
+            "description": "Default response if no command is given.",
+            "version_added": "2.0",
+            "commands_regex": "hhb",
+            "usage": "",
+            "supported_platforms": [
+                "twitch",
+                "discord"
+            ]
+        },
+        "hug": {
+            "name": "hhb hug",
+            "description": "",
+            "version_added": "2.0",
+            "commands_regex": "hug",
+            "usage": "hug [user]",
+            "supported_platforms": [
+                "twitch",
+                "discord"
+            ]
+        },
+        "hunt": {
+            "name": "hhb hunt",
+            "description": "Hugs you or another chatter.",
+            "version_added": "2.1",
+            "commands_regex": "hunt",
+            "usage": "hunt",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "indev": {
+            "name": "hhb indev",
+            "description": "",
+            "version_added": "2.0",
+            "commands_regex": "(in)?dev",
+            "usage": "indev",
+            "supported_platforms": [
+                "twitch",
+                "discord",
+                "telegram"
+            ]
+        },
+        "info": {
+            "name": "hhb info",
+            "description": "Responds with the Version, Age, Uptime and RAM usage.",
+            "version_added": "2.0",
+            "commands_regex": "(status|info|i|uptime)s?",
+            "usage": "info",
+            "supported_platforms": [
+                "twitch",
+                "discord"
+            ]
+        },
+        "joke": {
+            "name": "hhb joke",
+            "description": "Retrieves a joke or pun from the web.",
+            "version_added": "2.1",
+            "commands_regex": "(bad|)joke|4head|self destruct|lol",
+            "usage": "joke",
+            "supported_platforms": [
+                "twitch",
+                "discord"
+            ]
+        },
+        "messageuuid": {
+            "name": "hhb messageuuid",
+            "description": "Responds with the UUID of the message used to execute this command.",
+            "version_added": "2.0",
+            "commands_regex": "messageu?u?id|m?u?u?id",
+            "usage": "messageuuid",
+            "supported_platforms": [
+                "twitch",
+                "discord"
+            ]
+        },
+        "modules": {
+            "name": "hhb modules",
+            "description": "View and (un|re)load the modules active in Hannahbot.",
+            "version_added": "2.1",
+            "commands_regex": "(modules?|m)",
+            "usage": "module {load|unload|reload} {module}",
+            "supported_platforms": [
+                "twitch",
+                "twitch_whisper"
+            ]
+        },
+        "mycolor": {
+            "name": "hhb mycolor",
+            "description": "Responds with the color of the user who executed this command",
+            "version_added": "2.0",
+            "commands_regex": "mycolou?r|mycol|colou?r",
+            "usage": "mycolor",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "reminders": {
+            "name": "hhb reminder",
+            "description": "Create reminders for yourself or another person.",
+            "version_added": "2.0",
+            "commands_regex": "(reminders?|rem)",
+            "usage": "remind {me|user} in {when} {message}",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "say": {
+            "name": "hhb say",
+            "description": "Repeats the line given.",
+            "version_added": "2.2",
+            "commands_regex": "(say|repeat|echo)",
+            "usage": "say {message}",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "test": {
+            "name": "hhb test",
+            "description": "Replies with a test reply.",
+            "version_added": "2.0",
+            "commands_regex": "modcheck|pausechamp|test|dinkdonk|check|👋",
+            "usage": "test",
+            "supported_platforms": [
+                "twitch",
+                "twitch_whisper",
+                "discord"
+            ]
+        },
+        "widehardo": {
+            "name": "hhb widehardo",
+            "description": "Replies with a 'WideHardo' emote.",
+            "version_added": "2.0",
+            "commands_regex": "widehardo.*",
+            "usage": "widehardo",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "wordle": {
+            "name": "hhb wordle",
+            "description": "Generates a fake wordle share.",
+            "version_added": "2.0",
+            "commands_regex": "wordle",
+            "usage": "wordle",
+            "supported_platforms": [
+                "twitch"
+            ]
+        },
+        "yourmum": {
+            "name": "hhb yourmum",
+            "description": "Gets mad at the person who used the command.",
+            "version_added": "2.1",
+            "commands_regex": "yourm(u|o)m( ?joke)?",
+            "usage": "yourmum",
+            "supported_platforms": [
+                "twitch"
+            ]
+        }
+    },
+    "created": 1702724847246,
+    "version": "2.2"
+}
