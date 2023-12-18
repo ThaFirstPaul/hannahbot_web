@@ -122,7 +122,7 @@
         },
         "hug": {
             "name": "hhb hug",
-            "description": "",
+            "description": "Hugs you or another chatter.",
             "version_added": "2.0",
             "commands_regex": "hug",
             "usage": "hug [user]",
@@ -133,7 +133,7 @@
         },
         "hunt": {
             "name": "hhb hunt",
-            "description": "Hugs you or another chatter.",
+            "description": "",
             "version_added": "2.1",
             "commands_regex": "hunt",
             "usage": "hunt",
@@ -270,6 +270,6 @@
             ]
         }
     },
-    "created": 1702724847246,
+    "created": 1702840603580,
     "version": "2.2"
 }
