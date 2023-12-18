@@ -89,7 +89,7 @@
         },
         "error": {
             "name": "hhb error",
-            "description": "Tests the error-handeling capabilities of Hannahbot.",
+            "description": "Tests the error-handling capabilities of Hannahbot.",
             "version_added": "2.2",
             "commands_regex": "(test)?error",
             "usage": "error",
@@ -270,6 +270,6 @@
             ]
         }
     },
-    "created": 1702840603580,
+    "created": 1702904819698,
     "version": "2.2"
 }
